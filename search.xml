@@ -1380,6 +1380,39 @@ I2C应答设置，收到一个字节后是否给从机应答
       </tags>
   </entry>
   <entry>
+    <title>STM32PID学习</title>
+    <url>/2023/10/01/pid-xue-xi/</url>
+    <content><![CDATA[<h1 id="PID教程"><a href="#PID教程" class="headerlink" title="PID教程"></a><strong>PID教程</strong></h1><hr>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781828298.gif" alt="PID参数示意"></p>
+<h2 id="一、学习目的"><a href="#一、学习目的" class="headerlink" title="一、学习目的"></a>一、学习目的</h2><p><strong>PID</strong>（比例-积分-微分）是一种经典的<strong>闭环控制算法</strong>，其采用反馈的控制回路机制，用于自动调整系统的输出以接近设定点，，广泛用于工业控制系统和需要连续调制控制的其他各种应用中。它有三个组成部分：<strong>比例项Kp</strong>（根据当前误差调整输出）、<strong>积分项Ki</strong>（减小稳态误差）、<strong>微分项Kd</strong>（减小振荡和响应时间）。通过调整这些部分的权重，PID控制器能够适应不同的系统需求，实现稳定而精确的控制。无论是温度控制、速度调节还是位置控制，PID都是一个重要的工具。</p>
+<hr>
+<h2 id="二、PID简介"><a href="#二、PID简介" class="headerlink" title="二、PID简介"></a>二、PID简介</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781802782.png" alt="PID.png"></p>
+<p><a href="https://www.bilibili.com/video/BV1me4y1s7sE/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">请观看两分钟PID原理视频</a></p>
+<ul>
+<li><p><strong>Kp</strong>：比例环节是为了加快响应速度快速达到稳定，能减少误差但不能消除误差。</p>
+</li>
+<li><p><strong>Ki</strong>：积分环节是为了消除稳态误差，只要系统有误差他就一直积分，稳态后不会出现误差，过大会超调。</p>
+</li>
+<li><p><strong>Kd</strong>：微分环节预测误差的趋势，减少超调量来克服振荡，使系统稳定性提高。</p>
+</li>
+</ul>
+<hr>
+<h2 id="三、位置式PID"><a href="#三、位置式PID" class="headerlink" title="三、位置式PID"></a>三、位置式PID</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781816620.png" alt="PID.png"></p>
+<ul>
+<li>比例P：e(k)           （此次误差）</li>
+<li>积分I：∑e(i)          （误差的累加）</li>
+<li>微分D：e(k) - e(k-1)  （此次误差-上次误差）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+        <tag>PID控制</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Keil5-debug仿真教程</title>
     <url>/2023/10/01/keil5-debug-fang-zhen-jiao-cheng/</url>
     <content><![CDATA[<h1 id="Keil5-debug仿真教程"><a href="#Keil5-debug仿真教程" class="headerlink" title="Keil5-debug仿真教程"></a><strong>Keil5-debug仿真教程</strong></h1><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781254220.jpg" alt="keil5"></p>
@@ -1559,36 +1592,95 @@ I2C应答设置，收到一个字节后是否给从机应答
       </tags>
   </entry>
   <entry>
-    <title>STM32PID学习</title>
-    <url>/2023/10/01/pid-xue-xi/</url>
-    <content><![CDATA[<h1 id="PID教程"><a href="#PID教程" class="headerlink" title="PID教程"></a><strong>PID教程</strong></h1><hr>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781828298.gif" alt="PID参数示意"></p>
-<h2 id="一、学习目的"><a href="#一、学习目的" class="headerlink" title="一、学习目的"></a>一、学习目的</h2><p><strong>PID</strong>（比例-积分-微分）是一种经典的<strong>闭环控制算法</strong>，其采用反馈的控制回路机制，用于自动调整系统的输出以接近设定点，，广泛用于工业控制系统和需要连续调制控制的其他各种应用中。它有三个组成部分：<strong>比例项Kp</strong>（根据当前误差调整输出）、<strong>积分项Ki</strong>（减小稳态误差）、<strong>微分项Kd</strong>（减小振荡和响应时间）。通过调整这些部分的权重，PID控制器能够适应不同的系统需求，实现稳定而精确的控制。无论是温度控制、速度调节还是位置控制，PID都是一个重要的工具。</p>
-<hr>
-<h2 id="二、PID简介"><a href="#二、PID简介" class="headerlink" title="二、PID简介"></a>二、PID简介</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781802782.png" alt="PID.png"></p>
-<p><a href="https://www.bilibili.com/video/BV1me4y1s7sE/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">请观看两分钟PID原理视频</a></p>
-<ul>
-<li><p><strong>Kp</strong>：比例环节是为了加快响应速度快速达到稳定，能减少误差但不能消除误差。</p>
-</li>
-<li><p><strong>Ki</strong>：积分环节是为了消除稳态误差，只要系统有误差他就一直积分，稳态后不会出现误差，过大会超调。</p>
-</li>
-<li><p><strong>Kd</strong>：微分环节预测误差的趋势，减少超调量来克服振荡，使系统稳定性提高。</p>
-</li>
-</ul>
-<hr>
-<h2 id="三、位置式PID"><a href="#三、位置式PID" class="headerlink" title="三、位置式PID"></a>三、位置式PID</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781816620.png" alt="PID.png"></p>
-<ul>
-<li>比例P：e(k)           （此次误差）</li>
-<li>积分I：∑e(i)          （误差的累加）</li>
-<li>微分D：e(k) - e(k-1)  （此次误差-上次误差）</li>
-</ul>
+    <title>RK3588S-Rock5A开机玩耍记录</title>
+    <url>/2023/09/10/rk3588s-rock5a-kai-ji-wan-shua/</url>
+    <content><![CDATA[<h1 id="RK3588S-Rock5A开机玩耍记录"><a href="#RK3588S-Rock5A开机玩耍记录" class="headerlink" title="RK3588S-Rock5A开机玩耍记录"></a>RK3588S-Rock5A开机玩耍记录</h1><h2 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h2><p><a href="https://github.com/radxa-build/rock-5a/releases">镜像下载地址</a></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268263152.png" alt="github界面"><br>可能需要翻个墙，也可以使用GitHub文件下载工具</p>
+<p><a href="https://gh.api.99988866.xyz/">github下载文件加速</a></p>
+<p>下载后使用<a href="https://balenaetcher.en.softonic.com/">balenaEtcher-Portable</a> 下载到SD卡，建议整好一些的SD卡</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268589247.png" alt="镜像烧录软件"></p>
+<p>完成后插入SD卡，使用支持快充的供电器进行供电，好像是20W的需要，不然会启动不成功。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694271172558.gif" alt="绿灯常亮，蓝灯闪烁"></p>
+<h2 id="SSH访问连接"><a href="#SSH访问连接" class="headerlink" title="SSH访问连接"></a>SSH访问连接</h2><p>使用SSH终端工具</p>
+<p>扫描以太网共享的IP</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272796986.png" alt="IP扫描"></p>
+<p>俺的是192.168.137.219</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272895199.png" alt="SSH连接"></p>
+<p>用户名和密码都是 rock</p>
+<h2 id="添加官方软件源-（可以先不添加）"><a href="#添加官方软件源-（可以先不添加）" class="headerlink" title="添加官方软件源 （可以先不添加）"></a>添加官方软件源 （可以先不添加）</h2><p><a href="https://wiki.radxa.com/Rock5/guide/radxa-apt">参考链接</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DISTRO</span><span class="token operator">=</span>bionic-stable
+<span class="token builtin class-name">echo</span> <span class="token string">"deb http://apt.radxa.com/<span class="token variable">$DISTRO</span>/ <span class="token variable">${DISTRO<span class="token operator">%</span>-*}</span> main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/apt/sources.list.d/apt-radxa-com.list
+<span class="token function">sudo</span> <span class="token function">apt</span> update
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="开启VNC远程登录"><a href="#开启VNC远程登录" class="headerlink" title="开启VNC远程登录"></a>开启VNC远程登录</h2><p><strong>下载vncserver</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>设置VNC登录密码</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncpasswd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rock@rock-5a:~$ vncpasswd
+Password:
+Verify:
+Would you like to enter a view-only password <span class="token punctuation">(</span>y/n<span class="token punctuation">)</span>? n
+A view-only password is not used
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加配置文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment">#!/bin/sh</span>
+<span class="token comment"># Start kde Desktop </span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
+<span class="token assign-left variable">OS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> <span class="token parameter variable">-s</span><span class="token variable">`</span></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$OS</span> <span class="token operator">=</span> <span class="token string">'Linux'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$WINDOWMANAGER</span>"</span> <span class="token keyword">in</span>
+    *gnome*<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-e</span> /etc/SuSE-release <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/opt/gnome/bin
+        <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
+      <span class="token keyword">fi</span>
+      <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token keyword">esac</span>
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exec</span> <span class="token function">sh</span> /etc/X11/xinit/xinitrc
+<span class="token keyword">fi</span>
+<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources
+xsetroot <span class="token parameter variable">-solid</span> grey
+xterm <span class="token parameter variable">-geometry</span> <span class="token number">80</span>*24+10+10 <span class="token parameter variable">-ls</span> <span class="token parameter variable">-title</span> <span class="token string">"<span class="token variable">$VNCDESKTOP</span> Desktop"</span> <span class="token operator">&amp;</span>
+twm <span class="token operator">&amp;</span>
+startkde <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>增加可执行权限：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>启动vnc服务：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-geometry</span> 1920x1080 <span class="token parameter variable">-alwaysshared</span> <span class="token parameter variable">-depth</span> <span class="token number">24</span> <span class="token parameter variable">-dpi</span> <span class="token number">96</span> :1 <span class="token parameter variable">-localhost</span> no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>查看VNC服务</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-list</span>
+
+TigerVNC server sessions:
+
+X <span class="token environment constant">DISPLAY</span> <span class="token comment">#     RFB PORT #      RFB UNIX PATH   PROCESS ID #    SERVER</span>
+<span class="token number">1</span>               <span class="token number">5901</span>                            <span class="token number">3295</span>            Xtigervnc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用VNC连接即可</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694316548629.png" alt="登录桌面"></p>
+<p><strong>参考链接</strong><br><a href="https://zhuanlan.zhihu.com/p/638955703">给Rock5a开启远程桌面</a></p>
 ]]></content>
       <categories>
-        <category>嵌入式</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>STM32</tag>
-        <tag>PID控制</tag>
+        <tag>RK3588s</tag>
+        <tag>Rock5A</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1894,222 +1986,6 @@ I2C应答设置，收到一个字节后是否给从机应答
         <tag>F407</tag>
         <tag>USB</tag>
         <tag>虚拟串口</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RK3588S-Rock5A开机玩耍记录</title>
-    <url>/2023/09/10/rk3588s-rock5a-kai-ji-wan-shua/</url>
-    <content><![CDATA[<h1 id="RK3588S-Rock5A开机玩耍记录"><a href="#RK3588S-Rock5A开机玩耍记录" class="headerlink" title="RK3588S-Rock5A开机玩耍记录"></a>RK3588S-Rock5A开机玩耍记录</h1><h2 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h2><p><a href="https://github.com/radxa-build/rock-5a/releases">镜像下载地址</a></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268263152.png" alt="github界面"><br>可能需要翻个墙，也可以使用GitHub文件下载工具</p>
-<p><a href="https://gh.api.99988866.xyz/">github下载文件加速</a></p>
-<p>下载后使用<a href="https://balenaetcher.en.softonic.com/">balenaEtcher-Portable</a> 下载到SD卡，建议整好一些的SD卡</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694268589247.png" alt="镜像烧录软件"></p>
-<p>完成后插入SD卡，使用支持快充的供电器进行供电，好像是20W的需要，不然会启动不成功。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694271172558.gif" alt="绿灯常亮，蓝灯闪烁"></p>
-<h2 id="SSH访问连接"><a href="#SSH访问连接" class="headerlink" title="SSH访问连接"></a>SSH访问连接</h2><p>使用SSH终端工具</p>
-<p>扫描以太网共享的IP</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272796986.png" alt="IP扫描"></p>
-<p>俺的是192.168.137.219</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694272895199.png" alt="SSH连接"></p>
-<p>用户名和密码都是 rock</p>
-<h2 id="添加官方软件源-（可以先不添加）"><a href="#添加官方软件源-（可以先不添加）" class="headerlink" title="添加官方软件源 （可以先不添加）"></a>添加官方软件源 （可以先不添加）</h2><p><a href="https://wiki.radxa.com/Rock5/guide/radxa-apt">参考链接</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DISTRO</span><span class="token operator">=</span>bionic-stable
-<span class="token builtin class-name">echo</span> <span class="token string">"deb http://apt.radxa.com/<span class="token variable">$DISTRO</span>/ <span class="token variable">${DISTRO<span class="token operator">%</span>-*}</span> main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/apt/sources.list.d/apt-radxa-com.list
-<span class="token function">sudo</span> <span class="token function">apt</span> update
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="开启VNC远程登录"><a href="#开启VNC远程登录" class="headerlink" title="开启VNC远程登录"></a>开启VNC远程登录</h2><p><strong>下载vncserver</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>设置VNC登录密码</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncpasswd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rock@rock-5a:~$ vncpasswd
-Password:
-Verify:
-Would you like to enter a view-only password <span class="token punctuation">(</span>y/n<span class="token punctuation">)</span>? n
-A view-only password is not used
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>添加配置文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
-<span class="token comment">#!/bin/sh</span>
-<span class="token comment"># Start kde Desktop </span>
-<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
-<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
-<span class="token assign-left variable">OS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> <span class="token parameter variable">-s</span><span class="token variable">`</span></span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$OS</span> <span class="token operator">=</span> <span class="token string">'Linux'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$WINDOWMANAGER</span>"</span> <span class="token keyword">in</span>
-    *gnome*<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-e</span> /etc/SuSE-release <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-        <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/opt/gnome/bin
-        <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
-      <span class="token keyword">fi</span>
-      <span class="token punctuation">;</span><span class="token punctuation">;</span>
-  <span class="token keyword">esac</span>
-<span class="token keyword">fi</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token builtin class-name">exec</span> /etc/X11/xinit/xinitrc
-<span class="token keyword">fi</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> /etc/X11/xinit/xinitrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token builtin class-name">exec</span> <span class="token function">sh</span> /etc/X11/xinit/xinitrc
-<span class="token keyword">fi</span>
-<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources
-xsetroot <span class="token parameter variable">-solid</span> grey
-xterm <span class="token parameter variable">-geometry</span> <span class="token number">80</span>*24+10+10 <span class="token parameter variable">-ls</span> <span class="token parameter variable">-title</span> <span class="token string">"<span class="token variable">$VNCDESKTOP</span> Desktop"</span> <span class="token operator">&amp;</span>
-twm <span class="token operator">&amp;</span>
-startkde <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>增加可执行权限：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x ~/.vnc/xstartup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>启动vnc服务：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-geometry</span> 1920x1080 <span class="token parameter variable">-alwaysshared</span> <span class="token parameter variable">-depth</span> <span class="token number">24</span> <span class="token parameter variable">-dpi</span> <span class="token number">96</span> :1 <span class="token parameter variable">-localhost</span> no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>查看VNC服务</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vncserver <span class="token parameter variable">-list</span>
-
-TigerVNC server sessions:
-
-X <span class="token environment constant">DISPLAY</span> <span class="token comment">#     RFB PORT #      RFB UNIX PATH   PROCESS ID #    SERVER</span>
-<span class="token number">1</span>               <span class="token number">5901</span>                            <span class="token number">3295</span>            Xtigervnc
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>使用VNC连接即可</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1694316548629.png" alt="登录桌面"></p>
-<p><strong>参考链接</strong><br><a href="https://zhuanlan.zhihu.com/p/638955703">给Rock5a开启远程桌面</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>RK3588s</tag>
-        <tag>Rock5A</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>STM32串口学习</title>
-    <url>/2023/10/01/chuan-kou-xue-xi/</url>
-    <content><![CDATA[<h2 id="串口学习"><a href="#串口学习" class="headerlink" title="串口学习"></a>串口学习</h2><h4 id="用到新器件："><a href="#用到新器件：" class="headerlink" title="用到新器件："></a>用到新器件：</h4><p>USB转TTL</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923473260.png" alt="image"></p>
-<table>
-<thead>
-<tr>
-<th align="left">USB 转 TTL 模块 GND</th>
-<th align="left">单片机 GND 口</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">USB 转 TTL 模块 TXD</td>
-<td align="left">PA10</td>
-</tr>
-<tr>
-<td align="left">USB 转 TTL 模块 RXD</td>
-<td align="left">PA9</td>
-</tr>
-<tr>
-<td align="left">USB 转 TTL 模块 USB 口</td>
-<td align="left">电脑 USB</td>
-</tr>
-</tbody></table>
-<ol>
-<li>并行通信和串行通信 所谓通信，其实说白了就是处理器与外部设备之间的交流，就像电脑连接键盘、鼠标或打印机之类。计算机领域的通信一般有两种方式，即并行通信和串行通信。这两种方式的优缺点对比如下：</li>
-</ol>
-<p>并行通信<br>&nbsp;&nbsp; -传输原理：数据各个位同时传输。</p>
-<p>&nbsp;&nbsp; -优点：速度快</p>
-<p>&nbsp;&nbsp; -缺点：占用引脚资源多</p>
-<p>串行通信<br>&nbsp;&nbsp; -传输原理：数据按位顺序传输。</p>
-<p>&nbsp;&nbsp; -优点：占用引脚资源少</p>
-<p>&nbsp;&nbsp; -缺点：速度相对较慢</p>
-<ol>
-<li><p>串行通信的分类</p>
-<p>按照数据的传送方向可以分为：</p>
-</li>
-</ol>
-<p>单工：数据传输只支持数据在一个方向上传输<br>半双工：允许数据在两个方向上传输，但是，在某一时刻，只允许数据在一个方向上传输，它实际上是一种切换方向的单工通信；<br>全双工：允许数据同时在两个方向上传输，因此，全双工通信是两个单工通信方式的结合，它要求发送设备和接收设备都有独立的接收和发送能力。</p>
-<p>关于 UART 和 USART：</p>
-<p>UART 串口通信协议全称叫做通用异步收发传输器 （Universal Asynchronous Receiver/Transmitter）、</p>
-<p>USART 串口通信协议全称叫做通用同步异步收发传输器（universal synchronous asynchronous receiver and transmitter）</p>
-<p>一般的单片机 UART 和 USART 使用方式是一样的，都使用异步模式，所以我们 初期学习 stm32 串口的使用，学的就是 uart 类型的异步串口通信。</p>
-<p>TTL：TTL 电平信号规定，+5V 等价于逻辑“1”，0V 等价于逻辑“0”(采用二进制来表示数据时)。这样的数据通信及电平规定方式，被称做 TTL（晶体管-晶体管逻辑电 平）信号系统。TTL 设备使用的电压水平普遍为 5V 或 3.3V，目前咱们学习单片机TTL电压是3.3V，故把跳线帽中 VCC和3.3连一起。</p>
-<p>.在使用前要安装上CH340驱动。</p>
-<p>TXD 发送数据 Transmit(tx) Data 简写形式 RXD 接受数据 Receive(rx) Data 简写形式 TXD 和 TX，RXD 和 RX 其实是一个意思。所以要这样交叉连，TTL 模块的 TXD就相当于电脑的发送接口，那当然就要连 STM32 的接收接口，也就是 RX，一 端发送，另一端接收。 另一条线路同理。</p>
-<p>现在咱们了解一下波特率：</p>
-<p>波特率(Baud Rate)单位 bps – 每秒传送的二进制位数 bit Per Second.。9600bps 就是每秒传输 9600 位。 因为一个字节是 8 个 bit，而一个字节通常可以表达一个 ASCII 码，比如一个英 文字母，所以：9600 的波特率的信道（信号的传递通道），理论上每秒可以传 输 9600/8 个英文字母的数据量，也就是 1200 个字节，大约 1.2KB。 （1 字节=1B=8 位=8bit）。</p>
-<p>p.s. 如果 1.2KB/s 的网速，可以想象通信有多慢，所以 uart 通信并不是高速通信。</p>
-<p>相关寄存器：</p>
-<p>USART_SR状态寄存器<br>USART_DR数据寄存器<br>USART_BRR波特率寄存器</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923486356.png" alt="image"></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923493806.png" alt="image"></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923517843.png" alt="image"></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923526205.png" alt="image"></p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923532868.png" alt="image"></p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">uart_init</span><span class="token punctuation">(</span>u32 bound<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-<span class="token comment">//GPIO端口设置   PA9--TXD  PA10--RXD</span>
-GPIO_InitTypeDef GPIO_InitStructure<span class="token punctuation">;</span>
-USART_InitTypeDef USART_InitStructure<span class="token punctuation">;</span>
-NVIC_InitTypeDef NVIC_InitStructure<span class="token punctuation">;</span>
-<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_USART<span class="token operator">|</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//使USART1，GPIOA时钟</span>
-
-<span class="token comment">//USART1_TX   GPIOA.9---输出</span>
-GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_9<span class="token punctuation">;</span> <span class="token comment">//PA.9</span>
-GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>
-GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_AF_PP<span class="token punctuation">;</span>	<span class="token comment">//复用推挽输出</span>
-<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//初始化GPIOA.9</span>
-
-<span class="token comment">//USART1_RX	  GPIOA.10初始化---输入</span>
-GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_10<span class="token punctuation">;</span><span class="token comment">//PA10</span>
-GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IN_FLOATING<span class="token punctuation">;</span><span class="token comment">//浮空输入</span>
-<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//初始化GPIOA.10  </span>
-
-<span class="token comment">//Usart1 NVIC 配置     串口接收信息时会频繁进入串口接受中断，为了不影响其他程序正常运行，一般把中断两位优先级调最低。</span>
-NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannel <span class="token operator">=</span> USART1_IRQn<span class="token punctuation">;</span>
-NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannelPreemptionPriority<span class="token operator">=</span><span class="token number">3</span> <span class="token punctuation">;</span><span class="token comment">//抢占优先级3</span>
-NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannelSubPriority <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>		<span class="token comment">//子优先级3</span>
-NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannelCmd <span class="token operator">=</span> ENABLE<span class="token punctuation">;</span>			<span class="token comment">//IRQ通道使能</span>
-<span class="token function">NVIC_Init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>NVIC_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//根据指定的参数初始化VIC寄存器</span>
-<span class="token comment">//USART 初始化设置</span>
-    USART_InitStructure<span class="token punctuation">.</span>USART_BaudRate <span class="token operator">=</span> bound<span class="token punctuation">;</span><span class="token comment">//串口波特率</span>
-    USART_InitStructure<span class="token punctuation">.</span>USART_WordLength <span class="token operator">=</span> USART_WordLength_8b<span class="token punctuation">;</span><span class="token comment">//字长为8位数据格式   还有九位，一般用八位。</span>
-    USART_InitStructure<span class="token punctuation">.</span>USART_StopBits <span class="token operator">=</span> USART_StopBits_1<span class="token punctuation">;</span><span class="token comment">//一个停止位</span>
-    USART_InitStructure<span class="token punctuation">.</span>USART_Parity <span class="token operator">=</span> USART_Parity_No<span class="token punctuation">;</span><span class="token comment">//无奇偶校验位</span>
-    USART_InitStructure<span class="token punctuation">.</span>USART_HardwareFlowControl <span class="token operator">=</span> USART_HardwareFlowControl_None<span class="token punctuation">;</span><span class="token comment">//无硬件数据流控制   --一般没用过</span>
-    USART_InitStructure<span class="token punctuation">.</span>USART_Mode <span class="token operator">=</span> USART_Mode_Rx <span class="token operator">|</span> USART_Mode_Tx<span class="token punctuation">;</span>	<span class="token comment">//收发模式</span>
-
-<span class="token function">USART_Init</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>USART_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//初始化串口1</span>
-<span class="token function">USART_ITConfig</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_IT_RXNE<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//开启串口接受中断</span>
-<span class="token function">USART_Cmd</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">//使能串口1</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">//重定义fputc函数 ---重定向printf，直接复制即可</span>
-<span class="token keyword">int</span> <span class="token function">fputc</span><span class="token punctuation">(</span><span class="token keyword">int</span> ch<span class="token punctuation">,</span> FILE <span class="token operator">*</span>f<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>      
-	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>USART1<span class="token operator">-&gt;</span>SR<span class="token operator">&amp;</span><span class="token number">0X40</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//循环发送,直到发送完毕   </span>
-    USART1<span class="token operator">-&gt;</span>DR <span class="token operator">=</span> <span class="token punctuation">(</span>u8<span class="token punctuation">)</span> ch<span class="token punctuation">;</span>      
-	<span class="token keyword">return</span> ch<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment">/*如果使用多个串口只需修改USART1即可,
-ps .USART1-&gt;USART3    */</span>
-<span class="token comment">//故如果要打印自己姓名只需在main中printf即可</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>嵌入式</category>
-      </categories>
-      <tags>
-        <tag>STM32</tag>
-        <tag>串口</tag>
       </tags>
   </entry>
   <entry>
@@ -2430,6 +2306,130 @@ void I2C_Delay(void)
       <tags>
         <tag>STM32</tag>
         <tag>Tim定时器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM32串口学习</title>
+    <url>/2023/10/01/chuan-kou-xue-xi/</url>
+    <content><![CDATA[<h2 id="串口学习"><a href="#串口学习" class="headerlink" title="串口学习"></a>串口学习</h2><h4 id="用到新器件："><a href="#用到新器件：" class="headerlink" title="用到新器件："></a>用到新器件：</h4><p>USB转TTL</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923473260.png" alt="image"></p>
+<table>
+<thead>
+<tr>
+<th align="left">USB 转 TTL 模块 GND</th>
+<th align="left">单片机 GND 口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">USB 转 TTL 模块 TXD</td>
+<td align="left">PA10</td>
+</tr>
+<tr>
+<td align="left">USB 转 TTL 模块 RXD</td>
+<td align="left">PA9</td>
+</tr>
+<tr>
+<td align="left">USB 转 TTL 模块 USB 口</td>
+<td align="left">电脑 USB</td>
+</tr>
+</tbody></table>
+<ol>
+<li>并行通信和串行通信 所谓通信，其实说白了就是处理器与外部设备之间的交流，就像电脑连接键盘、鼠标或打印机之类。计算机领域的通信一般有两种方式，即并行通信和串行通信。这两种方式的优缺点对比如下：</li>
+</ol>
+<p>并行通信<br>&nbsp;&nbsp; -传输原理：数据各个位同时传输。</p>
+<p>&nbsp;&nbsp; -优点：速度快</p>
+<p>&nbsp;&nbsp; -缺点：占用引脚资源多</p>
+<p>串行通信<br>&nbsp;&nbsp; -传输原理：数据按位顺序传输。</p>
+<p>&nbsp;&nbsp; -优点：占用引脚资源少</p>
+<p>&nbsp;&nbsp; -缺点：速度相对较慢</p>
+<ol>
+<li><p>串行通信的分类</p>
+<p>按照数据的传送方向可以分为：</p>
+</li>
+</ol>
+<p>单工：数据传输只支持数据在一个方向上传输<br>半双工：允许数据在两个方向上传输，但是，在某一时刻，只允许数据在一个方向上传输，它实际上是一种切换方向的单工通信；<br>全双工：允许数据同时在两个方向上传输，因此，全双工通信是两个单工通信方式的结合，它要求发送设备和接收设备都有独立的接收和发送能力。</p>
+<p>关于 UART 和 USART：</p>
+<p>UART 串口通信协议全称叫做通用异步收发传输器 （Universal Asynchronous Receiver/Transmitter）、</p>
+<p>USART 串口通信协议全称叫做通用同步异步收发传输器（universal synchronous asynchronous receiver and transmitter）</p>
+<p>一般的单片机 UART 和 USART 使用方式是一样的，都使用异步模式，所以我们 初期学习 stm32 串口的使用，学的就是 uart 类型的异步串口通信。</p>
+<p>TTL：TTL 电平信号规定，+5V 等价于逻辑“1”，0V 等价于逻辑“0”(采用二进制来表示数据时)。这样的数据通信及电平规定方式，被称做 TTL（晶体管-晶体管逻辑电 平）信号系统。TTL 设备使用的电压水平普遍为 5V 或 3.3V，目前咱们学习单片机TTL电压是3.3V，故把跳线帽中 VCC和3.3连一起。</p>
+<p>.在使用前要安装上CH340驱动。</p>
+<p>TXD 发送数据 Transmit(tx) Data 简写形式 RXD 接受数据 Receive(rx) Data 简写形式 TXD 和 TX，RXD 和 RX 其实是一个意思。所以要这样交叉连，TTL 模块的 TXD就相当于电脑的发送接口，那当然就要连 STM32 的接收接口，也就是 RX，一 端发送，另一端接收。 另一条线路同理。</p>
+<p>现在咱们了解一下波特率：</p>
+<p>波特率(Baud Rate)单位 bps – 每秒传送的二进制位数 bit Per Second.。9600bps 就是每秒传输 9600 位。 因为一个字节是 8 个 bit，而一个字节通常可以表达一个 ASCII 码，比如一个英 文字母，所以：9600 的波特率的信道（信号的传递通道），理论上每秒可以传 输 9600/8 个英文字母的数据量，也就是 1200 个字节，大约 1.2KB。 （1 字节=1B=8 位=8bit）。</p>
+<p>p.s. 如果 1.2KB/s 的网速，可以想象通信有多慢，所以 uart 通信并不是高速通信。</p>
+<p>相关寄存器：</p>
+<p>USART_SR状态寄存器<br>USART_DR数据寄存器<br>USART_BRR波特率寄存器</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923486356.png" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923493806.png" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923517843.png" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923526205.png" alt="image"></p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696923532868.png" alt="image"></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">uart_init</span><span class="token punctuation">(</span>u32 bound<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+<span class="token comment">//GPIO端口设置   PA9--TXD  PA10--RXD</span>
+GPIO_InitTypeDef GPIO_InitStructure<span class="token punctuation">;</span>
+USART_InitTypeDef USART_InitStructure<span class="token punctuation">;</span>
+NVIC_InitTypeDef NVIC_InitStructure<span class="token punctuation">;</span>
+<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_USART<span class="token operator">|</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//使USART1，GPIOA时钟</span>
+
+<span class="token comment">//USART1_TX   GPIOA.9---输出</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_9<span class="token punctuation">;</span> <span class="token comment">//PA.9</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_AF_PP<span class="token punctuation">;</span>	<span class="token comment">//复用推挽输出</span>
+<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//初始化GPIOA.9</span>
+
+<span class="token comment">//USART1_RX	  GPIOA.10初始化---输入</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_10<span class="token punctuation">;</span><span class="token comment">//PA10</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IN_FLOATING<span class="token punctuation">;</span><span class="token comment">//浮空输入</span>
+<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//初始化GPIOA.10  </span>
+
+<span class="token comment">//Usart1 NVIC 配置     串口接收信息时会频繁进入串口接受中断，为了不影响其他程序正常运行，一般把中断两位优先级调最低。</span>
+NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannel <span class="token operator">=</span> USART1_IRQn<span class="token punctuation">;</span>
+NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannelPreemptionPriority<span class="token operator">=</span><span class="token number">3</span> <span class="token punctuation">;</span><span class="token comment">//抢占优先级3</span>
+NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannelSubPriority <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>		<span class="token comment">//子优先级3</span>
+NVIC_InitStructure<span class="token punctuation">.</span>NVIC_IRQChannelCmd <span class="token operator">=</span> ENABLE<span class="token punctuation">;</span>			<span class="token comment">//IRQ通道使能</span>
+<span class="token function">NVIC_Init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>NVIC_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//根据指定的参数初始化VIC寄存器</span>
+<span class="token comment">//USART 初始化设置</span>
+    USART_InitStructure<span class="token punctuation">.</span>USART_BaudRate <span class="token operator">=</span> bound<span class="token punctuation">;</span><span class="token comment">//串口波特率</span>
+    USART_InitStructure<span class="token punctuation">.</span>USART_WordLength <span class="token operator">=</span> USART_WordLength_8b<span class="token punctuation">;</span><span class="token comment">//字长为8位数据格式   还有九位，一般用八位。</span>
+    USART_InitStructure<span class="token punctuation">.</span>USART_StopBits <span class="token operator">=</span> USART_StopBits_1<span class="token punctuation">;</span><span class="token comment">//一个停止位</span>
+    USART_InitStructure<span class="token punctuation">.</span>USART_Parity <span class="token operator">=</span> USART_Parity_No<span class="token punctuation">;</span><span class="token comment">//无奇偶校验位</span>
+    USART_InitStructure<span class="token punctuation">.</span>USART_HardwareFlowControl <span class="token operator">=</span> USART_HardwareFlowControl_None<span class="token punctuation">;</span><span class="token comment">//无硬件数据流控制   --一般没用过</span>
+    USART_InitStructure<span class="token punctuation">.</span>USART_Mode <span class="token operator">=</span> USART_Mode_Rx <span class="token operator">|</span> USART_Mode_Tx<span class="token punctuation">;</span>	<span class="token comment">//收发模式</span>
+
+<span class="token function">USART_Init</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>USART_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//初始化串口1</span>
+<span class="token function">USART_ITConfig</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_IT_RXNE<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//开启串口接受中断</span>
+<span class="token function">USART_Cmd</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">//使能串口1</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//重定义fputc函数 ---重定向printf，直接复制即可</span>
+<span class="token keyword">int</span> <span class="token function">fputc</span><span class="token punctuation">(</span><span class="token keyword">int</span> ch<span class="token punctuation">,</span> FILE <span class="token operator">*</span>f<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>      
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>USART1<span class="token operator">-&gt;</span>SR<span class="token operator">&amp;</span><span class="token number">0X40</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//循环发送,直到发送完毕   </span>
+    USART1<span class="token operator">-&gt;</span>DR <span class="token operator">=</span> <span class="token punctuation">(</span>u8<span class="token punctuation">)</span> ch<span class="token punctuation">;</span>      
+	<span class="token keyword">return</span> ch<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/*如果使用多个串口只需修改USART1即可,
+ps .USART1-&gt;USART3    */</span>
+<span class="token comment">//故如果要打印自己姓名只需在main中printf即可</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+        <tag>串口</tag>
       </tags>
   </entry>
   <entry>
