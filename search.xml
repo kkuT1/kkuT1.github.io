@@ -254,107 +254,36 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
       </tags>
   </entry>
   <entry>
-    <title>Keil5的魔法棒选项简介</title>
-    <url>/2023/10/01/c-keil5-de-mo-fa-bang-jian-jie/</url>
-    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778413765.png" alt="魔法棒引入"></h2><h1 id="Keil5的魔法棒选项简介"><a href="#Keil5的魔法棒选项简介" class="headerlink" title="Keil5的魔法棒选项简介"></a>Keil5的魔法棒选项简介</h1><h2 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778460206.png" alt="Device"></p>
-<p>这个页面功能较为简单，左上方分别显示供应商、芯片类型、工具集，右上方pack为当前使用的芯片包的版本号，URL为arm芯片包的下载地址（魔法上网访问）。中间带有一个搜索框可供检索。下方左侧是目前支持的芯片列表，右侧为该系列芯片资源的英文简介。</p>
-<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778479212.png" alt="Target"></p>
-<p>在这个界面中有很多配置信息。<br>Xtal:为当前工程使用的晶振频率</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778525728.png" alt="代码生成区"><br>ARM Compiler:编译器版本<br>下方两个选项分别为：</p>
-<ul>
-<li>是否使用跨模块优化</li>
-<li>是否使用MicroLIB</li>
-</ul>
+    <title>STM32PID学习</title>
+    <url>/2023/10/01/pid-xue-xi/</url>
+    <content><![CDATA[<h1 id="PID教程"><a href="#PID教程" class="headerlink" title="PID教程"></a><strong>PID教程</strong></h1><hr>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781828298.gif" alt="PID参数示意"></p>
+<h2 id="一、学习目的"><a href="#一、学习目的" class="headerlink" title="一、学习目的"></a>一、学习目的</h2><p><strong>PID</strong>（比例-积分-微分）是一种经典的<strong>闭环控制算法</strong>，其采用反馈的控制回路机制，用于自动调整系统的输出以接近设定点，，广泛用于工业控制系统和需要连续调制控制的其他各种应用中。它有三个组成部分：<strong>比例项Kp</strong>（根据当前误差调整输出）、<strong>积分项Ki</strong>（减小稳态误差）、<strong>微分项Kd</strong>（减小振荡和响应时间）。通过调整这些部分的权重，PID控制器能够适应不同的系统需求，实现稳定而精确的控制。无论是温度控制、速度调节还是位置控制，PID都是一个重要的工具。</p>
 <hr>
-<p><strong>tips：</strong><br>MicroLib是一个针对用C编写的基于ARM的嵌入式应用程序的高度优化的库。与包含在ARM编译器工具链中的标准C库相比，MicroLib提供了许多嵌入式系统所需的代码大小的显著优势。</p>
-<p>MicroLib和标准C库之间的主要区别是:</p>
-<p>1、MicroLib是专为深度嵌入式应用程序而设计的。</p>
-<p>2、MicroLib经过优化，比使用ARM标准库使用更少的代码和数据内存。</p>
-<p>3、MicroLib被设计成在没有操作系统的情况下工作，但是这并不妨碍它与任何操作系统或RTOS一起使用，如Keil RTX。</p>
-<p>4、MicroLib不包含文件I/O或宽字符支持。</p>
-<p>5、由于MicroLib已经优化到最小化代码大小，一些函数将比ARM编译工具中可用的标准C库例程执行得更慢。</p>
-<p>6、MicroLib和ARM标准库都包含在Keil MDK-ARM中。</p>
-<hr>
-<p> MicroLIB是一个c语言标准库，它编译出来的固件相比标准C库的固件更小一点，当然性能相对差一些，如果是程序存储空间比较紧张的情况下可以将这个选项打勾。</p>
-<p> PS：</p>
-<hr>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778676996.png" alt="内存读写区"><br> 左侧通俗点讲是程序指令和只读数据存储区的配置，startup代表程序入口地址所在的区域，左边一般配置为Flash、OTP等存储器挂载在总线上的地址区域，当然我们的程序也可以执行在RAM中，所以左边也可以配置为RAM所在的总线地址区间。右边通俗讲是可读写数据存储的区域，例如栈和堆以及程序中的可读写全局变量，这一块的配置一般在RAM上所以一般配置为RAM所在总线的地址区间。另外，如果我们有多块存储器挂载在总线上时也可以配置多块。</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778695180.png" alt="OUTPUT"></p>
-<p>输出界面。</p>
-<p>包括生成的可执行文件的名称，存储路径(均可修改)。</p>
-<h2 id="以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件"><a href="#以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件" class="headerlink" title="以及：- 是否生成调试信息- 是否生成hex文件- 是否生成浏览信息- 是否生成批处理文件- 是否创建库文件"></a>以及：<br>- 是否生成调试信息<br>- 是否生成hex文件<br>- 是否生成浏览信息<br>- 是否生成批处理文件<br>- 是否创建库文件</h2><ul>
-<li>Creat HEX ile:</li>
-</ul>
-<p>可执行文件（用于下载到芯片的程序文件），.hex文件一般用于在无法进行仿真器烧录代码的时候使用，通过串口在Boot模式下将代码烧录至芯片。</p>
+<h2 id="二、PID简介"><a href="#二、PID简介" class="headerlink" title="二、PID简介"></a>二、PID简介</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781802782.png" alt="PID.png"></p>
+<p><a href="https://www.bilibili.com/video/BV1me4y1s7sE/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">请观看两分钟PID原理视频</a></p>
 <ul>
-<li>Browse Information:</li>
-</ul>
-<p>勾选后会生成.crf文件，便于调试，但会使工程编译速度变慢</p>
-<p>.crf：浏览信息文件，使用Go to Definition Of(F12) 功能，就需要有这类文件。</p>
-<h2 id="Listing"><a href="#Listing" class="headerlink" title="Listing"></a>Listing</h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778724401.png" alt="Listing"></h2><p>第一个选项，可以选择生成链接文件的文件夹。<br>其余配置一般默认。</p>
-<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778760780.png" alt="C-C++"></h2><ul>
-<li><p>Preprocessor Symbols:<br>预处理符号，在这里进行的Define/Undefine具有全局属性。</p>
+<li><p><strong>Kp</strong>：比例环节是为了加快响应速度快速达到稳定，能减少误差但不能消除误差。</p>
 </li>
-<li><p>Language/Code Generation：</p>
-<p>   <strong>Optimization:</strong> 代码优化，有不同等级可选，配置合适的优化等级将高效的利用编译器的功能对程序进行优化，可以大大提高程序的效率以及对存储的优化。有时优化会带来程序的bug，有时候优化后不是实际想要的结果，这需要在使用的过程中积累经验。</p>
-<p>   <strong>C99 Mode：</strong></p>
-<p>   <strong>在C99中包括的特性有：</strong></p>
-<p>   增加了对编译器的限制，比如源程序每行要求至少支持到 4095 字节，变量名函数名的要求支持到 63 字节（extern 要求支持到 31）。</p>
-<p>   增强了预处理功能。例如：<br>   宏支持取可变参数 #define Macro(…) <strong>VA_ARGS</strong><br>   使用宏的时候，允许省略参数，被省略的参数会被扩展成空串。</p>
-<p>   支持 // 开头的单行注释（这个特性实际上在C89的很多编译器上已经被支持了）<br>   增加了新关键字 restrict, inline, _Complex, _Imaginary, _Bool<br>   支持 long long, long double _Complex, float _Complex 等类型</p>
-<p>   支持不定长的数组，即数组长度可以在运行时决定，比如利用变量作为数组长度。声明时使用 int a[var] 的形式。不过考虑到效率和实现，不定长数组不能用在全局，或 struct 与 union 里。</p>
-<p>   变量声明不必放在语句块的开头，for 语句提倡写成 for(int i=0;i&lt;100;++i) 的形式，即i 只在 for 语句块内部有效。</p>
+<li><p><strong>Ki</strong>：积分环节是为了消除稳态误差，只要系统有误差他就一直积分，稳态后不会出现误差，过大会超调。</p>
 </li>
-</ul>
-<p>使用 C99 Mode 时需要考虑兼容性和可移植性问题。</p>
-<ul>
-<li><p>Include Paths:</p>
-<p>   在这里需要添加工程中包含的头文件路径。</p>
-</li>
-</ul>
-<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778787505.png" alt="Debug"></h2><p>这个页面主要跟调试有关，这部分的功能在我们日常工作中经常会使用。如果可以灵活使用这部分的功能在工作中可以达到事半功倍的效果。左边是软件仿真调试配置，右边是硬件仿真调试配置。</p>
-<p>两个复选use选项，二选一。我一般使用DAP_link仿真器（便宜），性能一般，支持的断点数目较少。</p>
-<ul>
-<li><p>仿真器选型<br>下拉选项，可以根据需要选择不同的仿真器。</p>
-</li>
-<li><p>Load Application at Startup是指跳转到启动文件开始执行。</p>
-</li>
-<li><p>Run to main()是指开始调试时程序的指针位置main()函数的第一条指令处。</p>
-</li>
-<li><p>Initialization File:用户自定义地址,能够使开始调试时程序的指针跳转到指定位置</p>
-<p><a href="https://blog.csdn.net/u014783785/article/details/92581102">详细内容参考此博客</a></p>
+<li><p><strong>Kd</strong>：微分环节预测误差的趋势，减少超调量来克服振荡，使系统稳定性提高。</p>
 </li>
 </ul>
 <hr>
+<h2 id="三、位置式PID"><a href="#三、位置式PID" class="headerlink" title="三、位置式PID"></a>三、位置式PID</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781816620.png" alt="PID.png"></p>
 <ul>
-<li>setting</li>
+<li>比例P：e(k)           （此次误差）</li>
+<li>积分I：∑e(i)          （误差的累加）</li>
+<li>微分D：e(k) - e(k-1)  （此次误差-上次误差）</li>
 </ul>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778826246.png" alt="Setting"><br>在这个界面主要进行下载模式的选择（Port: SW/JTAG）以及最大时钟频率的配置（Max Clock）</p>
-<p>如果成功识别到仿真器，SWDIO处会显示该设备的序列号</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778867435.png" alt="FlashDown"></p>
-<p><em>Download unction</em></p>
-<pre><code> Erase Full Chip：下载程序时对芯片flash进行全片擦除；
-
- Erase Sectors：下载程序时对芯片flash用到的扇区进行擦除；
-
- Do not Erase：下载程序时不对flash进行擦除；
-</code></pre>
-<p>右面是对过程的控制：编程、校验、对芯片复位和运行；</p>
-<p>正常情况下建议选择部分擦除，，当遇到芯片锁死的情况建议使用全擦除。</p>
-<p><em>RAM Algorithm</em></p>
-<p>配置RAM的起始地址和大小。</p>
-<p><em>Programming Algorithm</em></p>
-<p>flash下载引导算法，这个算法的作用就是可以将数据写到芯片内部或者外部的flash中,选择与芯片flash大小一致的即可。</p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>keil5的魔法棒有很多功能，用好这些会让开发变得更加简单。这里仅对常用功能作大致介绍，余下部分可以自行探索。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778886935.png" alt="C结束"></p>
 ]]></content>
       <categories>
         <category>嵌入式</category>
       </categories>
       <tags>
         <tag>STM32</tag>
-        <tag>魔法棒</tag>
+        <tag>PID控制</tag>
       </tags>
   </entry>
   <entry>
@@ -768,36 +697,107 @@ u8 <span class="token function">SUMCRC</span><span class="token punctuation">(</
       </tags>
   </entry>
   <entry>
-    <title>STM32PID学习</title>
-    <url>/2023/10/01/pid-xue-xi/</url>
-    <content><![CDATA[<h1 id="PID教程"><a href="#PID教程" class="headerlink" title="PID教程"></a><strong>PID教程</strong></h1><hr>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781828298.gif" alt="PID参数示意"></p>
-<h2 id="一、学习目的"><a href="#一、学习目的" class="headerlink" title="一、学习目的"></a>一、学习目的</h2><p><strong>PID</strong>（比例-积分-微分）是一种经典的<strong>闭环控制算法</strong>，其采用反馈的控制回路机制，用于自动调整系统的输出以接近设定点，，广泛用于工业控制系统和需要连续调制控制的其他各种应用中。它有三个组成部分：<strong>比例项Kp</strong>（根据当前误差调整输出）、<strong>积分项Ki</strong>（减小稳态误差）、<strong>微分项Kd</strong>（减小振荡和响应时间）。通过调整这些部分的权重，PID控制器能够适应不同的系统需求，实现稳定而精确的控制。无论是温度控制、速度调节还是位置控制，PID都是一个重要的工具。</p>
-<hr>
-<h2 id="二、PID简介"><a href="#二、PID简介" class="headerlink" title="二、PID简介"></a>二、PID简介</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781802782.png" alt="PID.png"></p>
-<p><a href="https://www.bilibili.com/video/BV1me4y1s7sE/?spm_id_from=333.337.search-card.all.click&amp;vd_source=65cc1b0c6a89ff46e6b6a0afb26e5023">请观看两分钟PID原理视频</a></p>
+    <title>Keil5的魔法棒选项简介</title>
+    <url>/2023/10/01/c-keil5-de-mo-fa-bang-jian-jie/</url>
+    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778413765.png" alt="魔法棒引入"></h2><h1 id="Keil5的魔法棒选项简介"><a href="#Keil5的魔法棒选项简介" class="headerlink" title="Keil5的魔法棒选项简介"></a>Keil5的魔法棒选项简介</h1><h2 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778460206.png" alt="Device"></p>
+<p>这个页面功能较为简单，左上方分别显示供应商、芯片类型、工具集，右上方pack为当前使用的芯片包的版本号，URL为arm芯片包的下载地址（魔法上网访问）。中间带有一个搜索框可供检索。下方左侧是目前支持的芯片列表，右侧为该系列芯片资源的英文简介。</p>
+<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778479212.png" alt="Target"></p>
+<p>在这个界面中有很多配置信息。<br>Xtal:为当前工程使用的晶振频率</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778525728.png" alt="代码生成区"><br>ARM Compiler:编译器版本<br>下方两个选项分别为：</p>
 <ul>
-<li><p><strong>Kp</strong>：比例环节是为了加快响应速度快速达到稳定，能减少误差但不能消除误差。</p>
+<li>是否使用跨模块优化</li>
+<li>是否使用MicroLIB</li>
+</ul>
+<hr>
+<p><strong>tips：</strong><br>MicroLib是一个针对用C编写的基于ARM的嵌入式应用程序的高度优化的库。与包含在ARM编译器工具链中的标准C库相比，MicroLib提供了许多嵌入式系统所需的代码大小的显著优势。</p>
+<p>MicroLib和标准C库之间的主要区别是:</p>
+<p>1、MicroLib是专为深度嵌入式应用程序而设计的。</p>
+<p>2、MicroLib经过优化，比使用ARM标准库使用更少的代码和数据内存。</p>
+<p>3、MicroLib被设计成在没有操作系统的情况下工作，但是这并不妨碍它与任何操作系统或RTOS一起使用，如Keil RTX。</p>
+<p>4、MicroLib不包含文件I/O或宽字符支持。</p>
+<p>5、由于MicroLib已经优化到最小化代码大小，一些函数将比ARM编译工具中可用的标准C库例程执行得更慢。</p>
+<p>6、MicroLib和ARM标准库都包含在Keil MDK-ARM中。</p>
+<hr>
+<p> MicroLIB是一个c语言标准库，它编译出来的固件相比标准C库的固件更小一点，当然性能相对差一些，如果是程序存储空间比较紧张的情况下可以将这个选项打勾。</p>
+<p> PS：</p>
+<hr>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778676996.png" alt="内存读写区"><br> 左侧通俗点讲是程序指令和只读数据存储区的配置，startup代表程序入口地址所在的区域，左边一般配置为Flash、OTP等存储器挂载在总线上的地址区域，当然我们的程序也可以执行在RAM中，所以左边也可以配置为RAM所在的总线地址区间。右边通俗讲是可读写数据存储的区域，例如栈和堆以及程序中的可读写全局变量，这一块的配置一般在RAM上所以一般配置为RAM所在总线的地址区间。另外，如果我们有多块存储器挂载在总线上时也可以配置多块。</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778695180.png" alt="OUTPUT"></p>
+<p>输出界面。</p>
+<p>包括生成的可执行文件的名称，存储路径(均可修改)。</p>
+<h2 id="以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件"><a href="#以及：-是否生成调试信息-是否生成hex文件-是否生成浏览信息-是否生成批处理文件-是否创建库文件" class="headerlink" title="以及：- 是否生成调试信息- 是否生成hex文件- 是否生成浏览信息- 是否生成批处理文件- 是否创建库文件"></a>以及：<br>- 是否生成调试信息<br>- 是否生成hex文件<br>- 是否生成浏览信息<br>- 是否生成批处理文件<br>- 是否创建库文件</h2><ul>
+<li>Creat HEX ile:</li>
+</ul>
+<p>可执行文件（用于下载到芯片的程序文件），.hex文件一般用于在无法进行仿真器烧录代码的时候使用，通过串口在Boot模式下将代码烧录至芯片。</p>
+<ul>
+<li>Browse Information:</li>
+</ul>
+<p>勾选后会生成.crf文件，便于调试，但会使工程编译速度变慢</p>
+<p>.crf：浏览信息文件，使用Go to Definition Of(F12) 功能，就需要有这类文件。</p>
+<h2 id="Listing"><a href="#Listing" class="headerlink" title="Listing"></a>Listing</h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778724401.png" alt="Listing"></h2><p>第一个选项，可以选择生成链接文件的文件夹。<br>其余配置一般默认。</p>
+<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778760780.png" alt="C-C++"></h2><ul>
+<li><p>Preprocessor Symbols:<br>预处理符号，在这里进行的Define/Undefine具有全局属性。</p>
 </li>
-<li><p><strong>Ki</strong>：积分环节是为了消除稳态误差，只要系统有误差他就一直积分，稳态后不会出现误差，过大会超调。</p>
+<li><p>Language/Code Generation：</p>
+<p>   <strong>Optimization:</strong> 代码优化，有不同等级可选，配置合适的优化等级将高效的利用编译器的功能对程序进行优化，可以大大提高程序的效率以及对存储的优化。有时优化会带来程序的bug，有时候优化后不是实际想要的结果，这需要在使用的过程中积累经验。</p>
+<p>   <strong>C99 Mode：</strong></p>
+<p>   <strong>在C99中包括的特性有：</strong></p>
+<p>   增加了对编译器的限制，比如源程序每行要求至少支持到 4095 字节，变量名函数名的要求支持到 63 字节（extern 要求支持到 31）。</p>
+<p>   增强了预处理功能。例如：<br>   宏支持取可变参数 #define Macro(…) <strong>VA_ARGS</strong><br>   使用宏的时候，允许省略参数，被省略的参数会被扩展成空串。</p>
+<p>   支持 // 开头的单行注释（这个特性实际上在C89的很多编译器上已经被支持了）<br>   增加了新关键字 restrict, inline, _Complex, _Imaginary, _Bool<br>   支持 long long, long double _Complex, float _Complex 等类型</p>
+<p>   支持不定长的数组，即数组长度可以在运行时决定，比如利用变量作为数组长度。声明时使用 int a[var] 的形式。不过考虑到效率和实现，不定长数组不能用在全局，或 struct 与 union 里。</p>
+<p>   变量声明不必放在语句块的开头，for 语句提倡写成 for(int i=0;i&lt;100;++i) 的形式，即i 只在 for 语句块内部有效。</p>
 </li>
-<li><p><strong>Kd</strong>：微分环节预测误差的趋势，减少超调量来克服振荡，使系统稳定性提高。</p>
+</ul>
+<p>使用 C99 Mode 时需要考虑兼容性和可移植性问题。</p>
+<ul>
+<li><p>Include Paths:</p>
+<p>   在这里需要添加工程中包含的头文件路径。</p>
+</li>
+</ul>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778787505.png" alt="Debug"></h2><p>这个页面主要跟调试有关，这部分的功能在我们日常工作中经常会使用。如果可以灵活使用这部分的功能在工作中可以达到事半功倍的效果。左边是软件仿真调试配置，右边是硬件仿真调试配置。</p>
+<p>两个复选use选项，二选一。我一般使用DAP_link仿真器（便宜），性能一般，支持的断点数目较少。</p>
+<ul>
+<li><p>仿真器选型<br>下拉选项，可以根据需要选择不同的仿真器。</p>
+</li>
+<li><p>Load Application at Startup是指跳转到启动文件开始执行。</p>
+</li>
+<li><p>Run to main()是指开始调试时程序的指针位置main()函数的第一条指令处。</p>
+</li>
+<li><p>Initialization File:用户自定义地址,能够使开始调试时程序的指针跳转到指定位置</p>
+<p><a href="https://blog.csdn.net/u014783785/article/details/92581102">详细内容参考此博客</a></p>
 </li>
 </ul>
 <hr>
-<h2 id="三、位置式PID"><a href="#三、位置式PID" class="headerlink" title="三、位置式PID"></a>三、位置式PID</h2><p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696781816620.png" alt="PID.png"></p>
 <ul>
-<li>比例P：e(k)           （此次误差）</li>
-<li>积分I：∑e(i)          （误差的累加）</li>
-<li>微分D：e(k) - e(k-1)  （此次误差-上次误差）</li>
+<li>setting</li>
 </ul>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778826246.png" alt="Setting"><br>在这个界面主要进行下载模式的选择（Port: SW/JTAG）以及最大时钟频率的配置（Max Clock）</p>
+<p>如果成功识别到仿真器，SWDIO处会显示该设备的序列号</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778867435.png" alt="FlashDown"></p>
+<p><em>Download unction</em></p>
+<pre><code> Erase Full Chip：下载程序时对芯片flash进行全片擦除；
+
+ Erase Sectors：下载程序时对芯片flash用到的扇区进行擦除；
+
+ Do not Erase：下载程序时不对flash进行擦除；
+</code></pre>
+<p>右面是对过程的控制：编程、校验、对芯片复位和运行；</p>
+<p>正常情况下建议选择部分擦除，，当遇到芯片锁死的情况建议使用全擦除。</p>
+<p><em>RAM Algorithm</em></p>
+<p>配置RAM的起始地址和大小。</p>
+<p><em>Programming Algorithm</em></p>
+<p>flash下载引导算法，这个算法的作用就是可以将数据写到芯片内部或者外部的flash中,选择与芯片flash大小一致的即可。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>keil5的魔法棒有很多功能，用好这些会让开发变得更加简单。这里仅对常用功能作大致介绍，余下部分可以自行探索。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696778886935.png" alt="C结束"></p>
 ]]></content>
       <categories>
         <category>嵌入式</category>
       </categories>
       <tags>
         <tag>STM32</tag>
-        <tag>PID控制</tag>
+        <tag>魔法棒</tag>
       </tags>
   </entry>
   <entry>
@@ -1518,6 +1518,37 @@ void I2C_Delay(void)
       </tags>
   </entry>
   <entry>
+    <title>安装激活keil5</title>
+    <url>/2023/10/01/an-zhuang-ji-huo-keil5/</url>
+    <content><![CDATA[<h1 id="安装激活keil5"><a href="#安装激活keil5" class="headerlink" title="安装激活keil5"></a>安装激活keil5</h1><h1 id="1-Keil-MDK-ARM下载"><a href="#1-Keil-MDK-ARM下载" class="headerlink" title="1. Keil MDK-ARM下载"></a>1. Keil MDK-ARM下载</h1><p>目前（2023年10月）Keil MDK-ARM官方最新版本是V5.38</p>
+<p>MDK-ARM安装包下载</p>
+<p>官网下载地址：<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a></p>
+<p>百度网盘下载地址：<a href="https://download.csdn.net/download/dengjin20104042056/12718973">https://download.csdn.net/download/dengjin20104042056/12718973</a></p>
+<h1 id="2-官网下载"><a href="#2-官网下载" class="headerlink" title="2. 官网下载"></a>2. 官网下载</h1><p>进入网址<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826485273.png" alt="Alt text"><br>点击MDK-Arm<br>然后会进入新的界面，并让你填一些信息，这些信息随便填写就行。点击Submit<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826496639.png" alt="Alt text"><br>进入到以一下界面!<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826508191.png" alt="Alt text"><br>点击MDK538A.EXE下载最新版</p>
+<h1 id="3-安装Keil5"><a href="#3-安装Keil5" class="headerlink" title="3. 安装Keil5"></a>3. 安装Keil5</h1><p>3.1 双击安装包，进入安装向导界面，点击Next<br>![Alt text]<img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826517257.png" alt="enter description here"><br>3.2 选择同意协议，然后下一步<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826523209.png" alt="Alt text"><br>3.3 选择软件和支持包安装路径（可以默认），点击Next。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826574975.png" alt="Alt text"><br>3.4 填写基本信息，然后选择下一步。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826580262.png" alt="Alt text"><br>3.5 安装过程中，弹出如下窗口，选择安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826585149.png" alt="Alt text"><br>3.6 点击Finish，完成安装。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826590369.png" alt="Alt text"><br>安装完成之后弹出的这个界面直接关掉就行<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826596024.png" alt="Alt text"></p>
+<h1 id="4-激活Keil5"><a href="#4-激活Keil5" class="headerlink" title="4. 激活Keil5"></a>4. 激活Keil5</h1><p>Keil MDK-ARM是一个收费的软件，官方打击盗版也比较严厉，若你是商业用途，建议购买正版软件。当然，针对个人开发学习的朋友而言，进行非商业用途的使用。</p>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826601898.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826608294.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826614185.png" alt="Alt text"><br>复制CID<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826619388.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826625181.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826633079.png" alt="Alt text"><br>粘贴序列号在1处，然后点击按钮2<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826640973.png" alt="Alt text"></p>
+<h1 id="5-安装芯片包"><a href="#5-安装芯片包" class="headerlink" title="5. 安装芯片包"></a>5. 安装芯片包</h1><h2 id="1-进入官网"><a href="#1-进入官网" class="headerlink" title="1.进入官网"></a>1.进入官网</h2><p>ARM Keil官网链接：(<a href="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png">https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png</a>)</p>
+<h2 id="2-进入CMSIS-Packs中选择需要的pack包"><a href="#2-进入CMSIS-Packs中选择需要的pack包" class="headerlink" title="2.进入CMSIS Packs中选择需要的pack包"></a>2.进入CMSIS Packs中选择需要的pack包</h2><p>输入需要的芯片型号后回车能显示出所有相关型号，或者在输入栏下方列表中查找：<br>找到所需安装包后，点击下载<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827134830.png" alt="Alt text"><br>下载速度慢的话可以在迅雷里面下载，迅雷有镜像源下载速度会很快</p>
+<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><p>双击打开，点Next就可以开始安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827139319.png" alt="Alt text"></p>
+<h1 id="6-安装V5编译器"><a href="#6-安装V5编译器" class="headerlink" title="6. 安装V5编译器"></a>6. 安装V5编译器</h1><h2 id="1-安装V5编译器的原因"><a href="#1-安装V5编译器的原因" class="headerlink" title="1.安装V5编译器的原因"></a>1.安装V5编译器的原因</h2><p>直接使用最新版的keil5编译时，发现网上的很多代码编译不过去。原因是以前的代码是ARM Compiler V5做的。然而，现在的KEIL不给预装ARM Compiler V5，如果用v6编译就如下图所示。所以我想办法给KEIL支持ARM Compiler V5。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827148073.png" alt="Alt text"><br>检查了一下，发现确实没有v5的编译器。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827157284.png" alt="Alt text"></p>
+<h2 id="2-获得ARM-Compiler-V5的安装包"><a href="#2-获得ARM-Compiler-V5的安装包" class="headerlink" title="2. 获得ARM Compiler V5的安装包"></a>2. 获得ARM Compiler V5的安装包</h2><p>国内有很多前辈其实已经把ARM Compiler V5下载下来了，仔细点搜还是搜得到的。但是我这里找到了一个官方的办法。</p>
+<p>找到了官方的这个问题说明文档：<a href="https://developer.arm.com/documentation/ka005198/latest">https://developer.arm.com/documentation/ka005198/latest</a></p>
+<p>然后顺着去找到下载网址：<a href="https://developer.arm.com/downloads/view/ACOMP5%E3%80%82">https://developer.arm.com/downloads/view/ACOMP5。</a><br>注意的是，这个网站是要登录ARM的账号。如果没有的话去注册一个就好。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827166455.png" alt="Alt text"><br>这里有两个下载资源。第一个应该是给linux的。如果是keil的话，我们一般是用在Windows上的，所以我们下载第二个。</p>
+<h2 id="3-安装-1"><a href="#3-安装-1" class="headerlink" title="3. 安装"></a>3. 安装</h2><p>下载以后，安装。但是注意安装路径一定要放在KEIL\ARM\下面创建的子目录里。我这里用的是KEIL\ARM\ARMCC5。</p>
+<h2 id="4-KEIL下引入ARM-Compiler-V5"><a href="#4-KEIL下引入ARM-Compiler-V5" class="headerlink" title="4. KEIL下引入ARM Compiler V5"></a>4. KEIL下引入ARM Compiler V5</h2><p>安装好了以后，点击那个－＞Folder/Extensions.<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827173569.png" alt="Alt text"><br>点Use ARM Compiler 最右边那个…。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827178876.png" alt="Alt text"><br>选中安装编译器的文件夹。于是就会出现：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827186382.png" alt="Alt text"><br>再点Setup Default ARM Compiler Version<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827194667.png" alt="Alt text"><br>一路点完确定。</p>
+<h2 id="5-确认"><a href="#5-确认" class="headerlink" title="5. 确认"></a>5. 确认</h2><p>点魔法棒，确认一下。已经可以选中ARM Compiler v5了。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827201560.png" alt="Alt text"></p>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+        <tag>KEIL5</tag>
+        <tag>IDE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markdown学习</title>
     <url>/2024/04/10/markdown-xue-xi/</url>
     <content><![CDATA[<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696776023223.png" alt="引入.png"></p>
@@ -1722,34 +1753,27 @@ ps .USART1-&gt;USART3    */</span>
       </tags>
   </entry>
   <entry>
-    <title>安装激活keil5</title>
-    <url>/2023/10/01/an-zhuang-ji-huo-keil5/</url>
-    <content><![CDATA[<h1 id="安装激活keil5"><a href="#安装激活keil5" class="headerlink" title="安装激活keil5"></a>安装激活keil5</h1><h1 id="1-Keil-MDK-ARM下载"><a href="#1-Keil-MDK-ARM下载" class="headerlink" title="1. Keil MDK-ARM下载"></a>1. Keil MDK-ARM下载</h1><p>目前（2023年10月）Keil MDK-ARM官方最新版本是V5.38</p>
-<p>MDK-ARM安装包下载</p>
-<p>官网下载地址：<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a></p>
-<p>百度网盘下载地址：<a href="https://download.csdn.net/download/dengjin20104042056/12718973">https://download.csdn.net/download/dengjin20104042056/12718973</a></p>
-<h1 id="2-官网下载"><a href="#2-官网下载" class="headerlink" title="2. 官网下载"></a>2. 官网下载</h1><p>进入网址<a href="https://www.keil.com/download/product/">https://www.keil.com/download/product/</a><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826485273.png" alt="Alt text"><br>点击MDK-Arm<br>然后会进入新的界面，并让你填一些信息，这些信息随便填写就行。点击Submit<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826496639.png" alt="Alt text"><br>进入到以一下界面!<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826508191.png" alt="Alt text"><br>点击MDK538A.EXE下载最新版</p>
-<h1 id="3-安装Keil5"><a href="#3-安装Keil5" class="headerlink" title="3. 安装Keil5"></a>3. 安装Keil5</h1><p>3.1 双击安装包，进入安装向导界面，点击Next<br>![Alt text]<img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826517257.png" alt="enter description here"><br>3.2 选择同意协议，然后下一步<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826523209.png" alt="Alt text"><br>3.3 选择软件和支持包安装路径（可以默认），点击Next。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826574975.png" alt="Alt text"><br>3.4 填写基本信息，然后选择下一步。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826580262.png" alt="Alt text"><br>3.5 安装过程中，弹出如下窗口，选择安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826585149.png" alt="Alt text"><br>3.6 点击Finish，完成安装。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826590369.png" alt="Alt text"><br>安装完成之后弹出的这个界面直接关掉就行<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826596024.png" alt="Alt text"></p>
-<h1 id="4-激活Keil5"><a href="#4-激活Keil5" class="headerlink" title="4. 激活Keil5"></a>4. 激活Keil5</h1><p>Keil MDK-ARM是一个收费的软件，官方打击盗版也比较严厉，若你是商业用途，建议购买正版软件。当然，针对个人开发学习的朋友而言，进行非商业用途的使用。</p>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826601898.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826608294.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826614185.png" alt="Alt text"><br>复制CID<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826619388.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826625181.png" alt="Alt text"><br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826633079.png" alt="Alt text"><br>粘贴序列号在1处，然后点击按钮2<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826640973.png" alt="Alt text"></p>
-<h1 id="5-安装芯片包"><a href="#5-安装芯片包" class="headerlink" title="5. 安装芯片包"></a>5. 安装芯片包</h1><h2 id="1-进入官网"><a href="#1-进入官网" class="headerlink" title="1.进入官网"></a>1.进入官网</h2><p>ARM Keil官网链接：(<a href="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png">https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700826651150.png</a>)</p>
-<h2 id="2-进入CMSIS-Packs中选择需要的pack包"><a href="#2-进入CMSIS-Packs中选择需要的pack包" class="headerlink" title="2.进入CMSIS Packs中选择需要的pack包"></a>2.进入CMSIS Packs中选择需要的pack包</h2><p>输入需要的芯片型号后回车能显示出所有相关型号，或者在输入栏下方列表中查找：<br>找到所需安装包后，点击下载<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827134830.png" alt="Alt text"><br>下载速度慢的话可以在迅雷里面下载，迅雷有镜像源下载速度会很快</p>
-<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><p>双击打开，点Next就可以开始安装<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827139319.png" alt="Alt text"></p>
-<h1 id="6-安装V5编译器"><a href="#6-安装V5编译器" class="headerlink" title="6. 安装V5编译器"></a>6. 安装V5编译器</h1><h2 id="1-安装V5编译器的原因"><a href="#1-安装V5编译器的原因" class="headerlink" title="1.安装V5编译器的原因"></a>1.安装V5编译器的原因</h2><p>直接使用最新版的keil5编译时，发现网上的很多代码编译不过去。原因是以前的代码是ARM Compiler V5做的。然而，现在的KEIL不给预装ARM Compiler V5，如果用v6编译就如下图所示。所以我想办法给KEIL支持ARM Compiler V5。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827148073.png" alt="Alt text"><br>检查了一下，发现确实没有v5的编译器。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827157284.png" alt="Alt text"></p>
-<h2 id="2-获得ARM-Compiler-V5的安装包"><a href="#2-获得ARM-Compiler-V5的安装包" class="headerlink" title="2. 获得ARM Compiler V5的安装包"></a>2. 获得ARM Compiler V5的安装包</h2><p>国内有很多前辈其实已经把ARM Compiler V5下载下来了，仔细点搜还是搜得到的。但是我这里找到了一个官方的办法。</p>
-<p>找到了官方的这个问题说明文档：<a href="https://developer.arm.com/documentation/ka005198/latest">https://developer.arm.com/documentation/ka005198/latest</a></p>
-<p>然后顺着去找到下载网址：<a href="https://developer.arm.com/downloads/view/ACOMP5%E3%80%82">https://developer.arm.com/downloads/view/ACOMP5。</a><br>注意的是，这个网站是要登录ARM的账号。如果没有的话去注册一个就好。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827166455.png" alt="Alt text"><br>这里有两个下载资源。第一个应该是给linux的。如果是keil的话，我们一般是用在Windows上的，所以我们下载第二个。</p>
-<h2 id="3-安装-1"><a href="#3-安装-1" class="headerlink" title="3. 安装"></a>3. 安装</h2><p>下载以后，安装。但是注意安装路径一定要放在KEIL\ARM\下面创建的子目录里。我这里用的是KEIL\ARM\ARMCC5。</p>
-<h2 id="4-KEIL下引入ARM-Compiler-V5"><a href="#4-KEIL下引入ARM-Compiler-V5" class="headerlink" title="4. KEIL下引入ARM Compiler V5"></a>4. KEIL下引入ARM Compiler V5</h2><p>安装好了以后，点击那个－＞Folder/Extensions.<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827173569.png" alt="Alt text"><br>点Use ARM Compiler 最右边那个…。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827178876.png" alt="Alt text"><br>选中安装编译器的文件夹。于是就会出现：<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827186382.png" alt="Alt text"><br>再点Setup Default ARM Compiler Version<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827194667.png" alt="Alt text"><br>一路点完确定。</p>
-<h2 id="5-确认"><a href="#5-确认" class="headerlink" title="5. 确认"></a>5. 确认</h2><p>点魔法棒，确认一下。已经可以选中ARM Compiler v5了。<br><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1700827201560.png" alt="Alt text"></p>
+    <title>审计人员的职业发展路径</title>
+    <url>/2024/04/10/shen-ji-zhi-ye-fa-zhan-lu-jing/</url>
+    <content><![CDATA[<h1 id="审计类型"><a href="#审计类型" class="headerlink" title="审计类型"></a>审计类型</h1><ol>
+<li>内部审计<br> 内部审计是公司内部成立的，职责是对企业内部<strong>经营活动的合法性</strong>、<strong>内部控制的有效性</strong>以及<strong>财务报表的公允性</strong>进行审查，保证企业的经营活动符合法律规范；确保企业设定的内部控制是有效的，能够应对企业的相关问题；以及保证管理层编制的财务报表是按照适用的财务报告编制基础编制出来的。</li>
+<li>外部审计<br> 外部审计是独立于被审计单位以及财务报告使用者的机构，一般是会计师事务所，有<strong>四大</strong>（德勤、毕马威、安永、普华永道）和<strong>本土八大</strong>（可以自己百度）以及其他小型事务所，属于乙方，主要职责是为被审计单位出具审计报告，对财务报表不存在由于舞弊或错误引起的重大错报提供合理保证。</li>
+<li>政府审计<br> 政府审计是对<strong>国企、事业单位、财政部</strong>的收支情况进行审计，保证财政收支使用透明。</li>
+</ol>
+<h1 id="职业发展路线"><a href="#职业发展路线" class="headerlink" title="职业发展路线"></a>职业发展路线</h1><h2 id="审计方向"><a href="#审计方向" class="headerlink" title="审计方向"></a>审计方向</h2><ol>
+<li>审计助理-审计-高级审计-审计经理-高级审计经理-合伙人<br> 在事务所每年都会有晋升，只是不同的所不一样，等到了高级审计，想要做项目经理就必须要考CPA证书了，一般情况下只有有CPA才能带队，但也不排除经验丰富或者拥有资源的人没证也可以晋升。但是不管怎样，想要在事务所长期发展CPA是不可缺少的，因为持证人才有审计报告签字权</li>
+<li>审计-高级审计-高级审计员（内审）-审计经理（内审）-审计总监<br> 这条路线是由外部审计转到内部审计的，也是从乙方转到甲方，内部审计相对于外部审计来说要轻松很多，工资当然也没有外部审计赚得多，更多的是专注于本公司的业务。</li>
+</ol>
+<h2 id="会计方向"><a href="#会计方向" class="headerlink" title="会计方向"></a>会计方向</h2><h2 id="金融方向"><a href="#金融方向" class="headerlink" title="金融方向"></a>金融方向</h2><h2 id="税务方向"><a href="#税务方向" class="headerlink" title="税务方向"></a>税务方向</h2><h2 id="考公务员或者事业单位"><a href="#考公务员或者事业单位" class="headerlink" title="考公务员或者事业单位"></a>考公务员或者事业单位</h2><pre><code>在35岁以前考进体制内，比如审计局、财政厅等等都可以，小声提醒审计局也是需要出差的哦。
+</code></pre>
+<hr>
+<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696776119362.png" alt="完结撒花"></p>
 ]]></content>
       <categories>
-        <category>嵌入式</category>
+        <category>审计</category>
       </categories>
       <tags>
-        <tag>STM32</tag>
-        <tag>KEIL5</tag>
-        <tag>IDE</tag>
+        <tag>职业发展路径</tag>
       </tags>
   </entry>
   <entry>
@@ -1779,30 +1803,6 @@ ps .USART1-&gt;USART3    */</span>
 
 
 ]]></content>
-  </entry>
-  <entry>
-    <title>审计人员的职业发展路径</title>
-    <url>/2024/04/10/shen-ji-zhi-ye-fa-zhan-lu-jing/</url>
-    <content><![CDATA[<h1 id="审计类型"><a href="#审计类型" class="headerlink" title="审计类型"></a>审计类型</h1><ol>
-<li>内部审计<br> 内部审计是公司内部成立的，职责是对企业内部<strong>经营活动的合法性</strong>、<strong>内部控制的有效性</strong>以及<strong>财务报表的公允性</strong>进行审查，保证企业的经营活动符合法律规范；确保企业设定的内部控制是有效的，能够应对企业的相关问题；以及保证管理层编制的财务报表是按照适用的财务报告编制基础编制出来的。</li>
-<li>外部审计<br> 外部审计是独立于被审计单位以及财务报告使用者的机构，一般是会计师事务所，有<strong>四大</strong>（德勤、毕马威、安永、普华永道）和<strong>本土八大</strong>（可以自己百度）以及其他小型事务所，属于乙方，主要职责是为被审计单位出具审计报告，对财务报表不存在由于舞弊或错误引起的重大错报提供合理保证。</li>
-<li>政府审计<br> 政府审计是对<strong>国企、事业单位、财政部</strong>的收支情况进行审计，保证财政收支使用透明。</li>
-</ol>
-<h1 id="职业发展路线"><a href="#职业发展路线" class="headerlink" title="职业发展路线"></a>职业发展路线</h1><h2 id="审计方向"><a href="#审计方向" class="headerlink" title="审计方向"></a>审计方向</h2><ol>
-<li>审计助理-审计-高级审计-审计经理-高级审计经理-合伙人<br> 在事务所每年都会有晋升，只是不同的所不一样，等到了高级审计，想要做项目经理就必须要考CPA证书了，一般情况下只有有CPA才能带队，但也不排除经验丰富或者拥有资源的人没证也可以晋升。但是不管怎样，想要在事务所长期发展CPA是不可缺少的，因为持证人才有审计报告签字权</li>
-<li>审计-高级审计-高级审计员（内审）-审计经理（内审）-审计总监<br> 这条路线是由外部审计转到内部审计的，也是从乙方转到甲方，内部审计相对于外部审计来说要轻松很多，工资当然也没有外部审计赚得多，更多的是专注于本公司的业务。</li>
-</ol>
-<h2 id="会计方向"><a href="#会计方向" class="headerlink" title="会计方向"></a>会计方向</h2><h2 id="金融方向"><a href="#金融方向" class="headerlink" title="金融方向"></a>金融方向</h2><h2 id="税务方向"><a href="#税务方向" class="headerlink" title="税务方向"></a>税务方向</h2><h2 id="考公务员或者事业单位"><a href="#考公务员或者事业单位" class="headerlink" title="考公务员或者事业单位"></a>考公务员或者事业单位</h2><pre><code>在35岁以前考进体制内，比如审计局、财政厅等等都可以，小声提醒审计局也是需要出差的哦。
-</code></pre>
-<hr>
-<p><img src="https://biubiu-1319563496.cos.ap-nanjing.myqcloud.com/markdown_img/1696776119362.png" alt="完结撒花"></p>
-]]></content>
-      <categories>
-        <category>审计</category>
-      </categories>
-      <tags>
-        <tag>职业发展路径</tag>
-      </tags>
   </entry>
   <entry>
     <title>STM32编码器速度采集</title>
